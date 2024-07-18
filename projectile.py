@@ -1,5 +1,6 @@
 import pygame
 
+
 # definir la classe qui va gerer le projectile de notre jouer
 class Projectile(pygame.sprite.Sprite):
 
@@ -24,6 +25,7 @@ class Projectile(pygame.sprite.Sprite):
 
     def remove(self):
         self.player.all_projectiles.remove(self)
+
     def move(self):
         self.rect.x += self.velocity
         self.rotate()
