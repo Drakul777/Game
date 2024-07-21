@@ -1,6 +1,4 @@
-from player import Player
 from game import Game
-from monster import Monster
 import pygame
 pygame.init()
 
@@ -29,6 +27,9 @@ while running:
     #appliquer l image du joueur
     screen.blit(game.player.image, game.player.rect)
 
+    #actualiser la barre de vie du joueur
+    game.player.update_health_bar(screen)
+
     # recuperer les projectiles du joueur
     for projectile in game.player.all_projectiles:
         projectile.move()
@@ -36,8 +37,9 @@ while running:
     #recuperer les monstres du jeu
     for monster in game.all_monsters:
         monster.forward()
+        monster.update_health_bar(screen)
 
-    # appliquer l'ensemble des images de mon groupe de projectiles
+    # appliquer l'ensemble des images du groupe de projectiles
     game.player.all_projectiles.draw(screen)
 
     #appliquer l ensemble des images des groupes de monstres
